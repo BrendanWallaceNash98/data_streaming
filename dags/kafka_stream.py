@@ -43,26 +43,22 @@ def format_data(res):
 
 
 def stream_data():
-    res = get_data()
-    res = format_data(res)
+    producer = KafkaProducer(bootstrap_servers=['broker:29092'], max_block_ms=5000)
+    curr_time = time.time()
 
-    producer = KafkaProducer(bootstrap_server=['localhost:29092'], max_block_ms=5000)
-    current_time = time.time()
     while True:
-        if time.time() > current_time + 60:
+        if time.time() > curr_time + 60: #1 minute
             break
         try:
             res = get_data()
             res = format_data(res)
-            producer.send('user_created', json.dumps(res).encode('utf-8'))
 
+            producer.send('users_created', json.dumps(res).encode('utf-8'))
         except Exception as e:
-            logging.error(f'error occured in data stream: {e}')
+            logging.error(f'An error occured: {e}')
             continue
 
-
-
-with DAG('user_automation',
+with DAG('I_would_like_a_job',
          default_args=default_args,
          schedule='@daily',
          catchup=False
