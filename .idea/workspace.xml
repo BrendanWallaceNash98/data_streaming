@@ -43,7 +43,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "true",
-    "last_opened_file_path": "/Users/brendanwallace-nash/data_streaming",
+    "last_opened_file_path": "/Users/brendanwallace-nash/end_to_end_kafka/pythonProject1/.venv/lib/python3.12/site-packages/pyspark/jars",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -52,6 +52,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.venv/lib/python3.12/site-packages/pyspark/jars" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
