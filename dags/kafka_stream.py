@@ -47,16 +47,21 @@ def stream_data():
     curr_time = time.time()
 
     while True:
-        if time.time() > curr_time + 60: #1 minute
+        if time.time() > curr_time + 300:  # 5 minutes
             break
         try:
             res = get_data()
             res = format_data(res)
 
-            producer.send('users_created', json.dumps(res).encode('utf-8'))
+            producer.send('user_data', json.dumps(res).encode('utf-8'))
+            producer.flush()  # Ensure the message is sent
+            logging.info(f"Sent data to Kafka: {res['id']}")
+            time.sleep(1)  # Add a small delay between sends
         except Exception as e:
-            logging.error(f'An error occured: {e}')
+            logging.error(f'An error occurred: {e}')
             continue
+
+    producer.close()
 
 with DAG('I_would_like_a_job',
          default_args=default_args,
